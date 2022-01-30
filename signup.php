@@ -64,48 +64,78 @@ if( isset($data['do_signup']) )
 
 ?>
 
-<form action="/signup.php" method="POST">
-    <p>
-        <p><strong>Ваше ФИО please</strong>:</p>
-        <input type="text" name="login" value="<?php echo @$data['login']; ?>">
-    </p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="c.css">
+</head>
+<body>
+<header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+      <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+      <span class="fs-4">Пример сайта</span>
+    </a>
 
-    <p>
-        <p><strong>Ваш e-mail please</strong>:</p>
-        <input type="email" name="email" value="<?php echo @$data['email']; ?>">
-    </p>
+    <ul class="nav nav-pills">
+      <li class="nav-item"><a href="index.php" class="nav-link active" aria-current="page">Главная</a></li>
+    </ul>
+  </header>
 
-    <p>
-        <p><strong>Ваш пароль please</strong>:<p><?php
-        $chars="qwertyuiopasdfghjklzxcvbnm1234567890QWERTYUIOPASDFGHJKLZXCVBNM!@#$%^&*()-";
-        $max=15;
-        $size=StrLen($chars) -1;
-        $password=null;
-            while($max--)
-            $password.=$chars[rand(0,$size)];
-        echo "Можете воспользоваться сгенерированным паролем: ".$password.""
-    ?></p></p>
-        <input type="password" name="password" value="<?php echo @$data['password']; ?>">
-    </p>
+<div class="container mt-5">
+    <h3>Регистрация</h3>
 
-    <p>
-        <p><strong>Пароль ещё раз please</strong>:</p>
-        <input type="password" name="password_2" value="<?php echo @$data['password_2']; ?>">
-    </p>
+    <form action="/signup.php" method="POST">
+        <p>
+        <div class="form-floating">
+            <input type="text" name="login" placeholder="Введите ваше ФИО" value="<?php echo @$data['login']; ?>"></div>
+        </p>
 
-    <p>
-        <p><strong>Серию вашего паспорта please</strong>:</p>
-        <input type="passport" name="passport" value="<?php echo @$data['passport']; ?>">
-    </p>
+        <p>
+        <div class="form-floating">
+            <input type="email" name="email" placeholder="Введите ваш e-mail" value="<?php echo @$data['email']; ?>"></div>
+        </p>
 
-    <p>
-        <p><strong>Номер вашего паспорта please</strong>:</p>
-        <input type="passport_2" name="passport_2" value="<?php echo @$data['passport_2']; ?>">>
-    </p>
+        <p>
+        
+            <?php
+            $chars="qwertyuiopasdfghjklzxcvbnm1234567890QWERTYUIOPASDFGHJKLZXCVBNM!@#$%^&*()-";
+            $max=15;
+            $size=StrLen($chars) -1;
+            $password=null;
+                while($max--)
+                $password.=$chars[rand(0,$size)];
+            echo "Можете воспользоваться сгенерированным паролем: ".$password.""
+        ?></p></p>
+        <p>
+        <div class="form-floating">
+            <input type="password" name="password" placeholder="Введите ваш пароль" value="<?php echo @$data['password']; ?>"></div>
+        </p>
+
+        <p>
+        <div class="form-floating">
+            <input type="password" name="password_2" placeholder="Повторите пароль" value="<?php echo @$data['password_2']; ?>"></div>
+        </p>
+
+        <p>
+        <div class="form-floating">
+            <input type="passport" name="passport" placeholder="Введите серию паспорта" value="<?php echo @$data['passport']; ?>"></div>
+        </p>
+
+        <p>
+        <div class="form-floating">
+            <input type="passport_2" name="passport_2" placeholder="Введите номер паспорта" value="<?php echo @$data['passport_2']; ?>"> </div>
+        </p>
 
 
-    <p>
-        <button type="submit" name="do_signup">Проходите!</button>
-    </p>
-</form>
+        <p>
+        <a href="index.php" class="btn btn-success" type="submit" name="do_signup" >Проходите!</a>
+        </p>
+    </form>
+</div>
+</body>
+</html>
 
