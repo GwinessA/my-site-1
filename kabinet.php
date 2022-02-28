@@ -4,33 +4,20 @@ require "db.php";
 
 ?>
 <?php if( isset($_SESSION['logged_user']) ) : ?>
-    Приветсвуем вас, <?php echo $_SESSION['logged_user']->login; ?> <br> 
-<br>
-    <?php
-$data = $_POST;
-if (isset($data['change_login'])) {
-    $errors = array();
-    if ($data['new_login'] == '') {
-        $errors[] = 'Введите новое ФИО:';
-    }
-    if ($data['new_login'] == $_SESSION['login']->login) {
-        $errors[] = 'Нельзя изменить своё ФИО на текущее!';
-    }
-    if (empty($errors)) {
-
-    }else {
-        echo array_shift($errors);
-    }
-}
-    ?>
-
-Ваш E-mail: <?php echo $_SESSION['logged_user']->email; ?><br>
-Серия вашего паспорта: <?php echo $_SESSION['logged_user']->passport; ?><br>
-Номер вашего паспорта: <?php echo $_SESSION['logged_user']->passport_2; ?><br>
-
-
-
-
-
-<a href="/index.php">На глвную</a>
+    <link rel="stylesheet" href="Skabinet.css">
+    <body>
+        <div class="form1">
+            <h1>Личный Кабинет</h1>
+            <p>Приветсвуем вас, <?php echo $_SESSION['logged_user']->login; ?><br></p> 
+            <p>Ваш E-mail: <?php echo $_SESSION['logged_user']->email; ?><br></p>
+            <p>Серия паспорта: <?php echo $_SESSION['logged_user']->passport; ?><br></p>
+            <p>Номер паспорта: <?php echo $_SESSION['logged_user']->passport_2; ?><br></p>
+            <div class="input-form">
+                <a href="/update.php" type="submit">Редактировать личные данные</a><br>
+            </div>
+            <div class="input-form">
+                <a href="/index.php" type="submit">На главную</a>
+            </div>
+        </div>
+    </body>
 <?php endif; ?>
